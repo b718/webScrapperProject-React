@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.firstHeader {
+  font-size: 5em;
+}
+
+.benderPNG{
+  display: block;
+  margin: 0 auto;
+  margin-top: 1rem;
+  max-width: 25rem;
+  border-radius: 50%;
+}

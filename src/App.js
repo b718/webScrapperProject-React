@@ -113,6 +113,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1 className="firstHeader">Bryan's Url Scraper</h1>
       <div className="urlEnter">
         <h1>Please Enter A URL</h1>
         <input ref={urlRef} type="text"></input>
@@ -137,6 +138,10 @@ function App() {
 
       <div className="outputWindow">
         <h1>{total}</h1>
+      </div>
+
+      <div className="pictureIMG">
+        <img className="benderPNG" src={require("./img/bender.png")}></img>
       </div>
     </div>
   );
