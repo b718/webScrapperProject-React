@@ -7,6 +7,9 @@ function App() {
   const [url, setUrl] = useState("");
   const [word, setWord] = useState("");
   const [total, setTotal] = useState(-1);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [currAng, setAng] = useState(0);
+
   const urlRef = useRef(null);
   const wordRef = useRef(null);
   // const express = require("express");
@@ -111,6 +114,32 @@ function App() {
     }
   }
 
+  const handleMouseMove = (e) => {
+    console.log(e);
+
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
+    setMousePos({ x: mouseX, y: mouseY });
+    console.log(mousePos);
+    const anchor = document.getElementById("anchor");
+    const rect = anchor.getBoundingClientRect();
+    const anchorX = rect.left + rect.width / 2;
+    const anchorY = rect.top + rect.height / 2;
+
+    const angelDeg = angle(mouseX, mouseY, anchorX, anchorY);
+    const re1 = document.getElementById("rickeye1");
+    setAng(angelDeg);
+    re1.style.transform = `rotate(${90 + currAng}deg)`;
+  };
+
+  function angle(cx, cy, ex, ey) {
+    const dy = ey - cy;
+    const dx = ex - cx;
+    const rad = Math.atan2(dy, dx);
+    const deg = (rad * 180) / Math.PI;
+    return deg;
+  }
+
   return (
     <div className="App">
       <h1 className="firstHeader">Bryan's Url Scraper</h1>
@@ -141,8 +170,39 @@ function App() {
       </div>
 
       <div className="pictureIMG">
-        <img className="benderPNG" src={require("./img/bender.png")}></img>
+        <img
+          id="anchor"
+          className="benderPNG"
+          src={require("./img/ricknmorty.png")}
+        ></img>
+        <div className="eyes">
+          <img
+            className="rickeye1"
+            src={require("./img/eye.png")}
+            onMouseMove={handleMouseMove}
+          ></img>
+          <img
+            className="rickeye2"
+            src={require("./img/eye.png")}
+            onMouseMove={handleMouseMove}
+          ></img>
+          <img
+            className="morteye1"
+            src={require("./img/eye.png")}
+            onMouseMove={handleMouseMove}
+          ></img>
+          <img
+            className="morteye2"
+            src={require("./img/eye.png")}
+            onMouseMove={handleMouseMove}
+          ></img>
+        </div>
       </div>
+
+      <div>
+        Coords: {mousePos.x} {mousePos.y}
+      </div>
+      <div>Deg: {currAng}</div>
     </div>
   );
 }

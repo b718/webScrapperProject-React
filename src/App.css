@@ -45,6 +45,35 @@
   display: block;
   margin: 0 auto;
   margin-top: 1rem;
-  max-width: 25rem;
-  border-radius: 50%;
+  max-width: 30rem;
 }
+
+.eyes img{
+  position: absolute;
+  max-width: 1.5rem;
+}
+
+.rickeye1 {
+  top: 765px;
+  left: 595px;
+}
+
+.rickeye2 {
+  top: 765px;
+  left: 545px;
+}
+
+.morteye1 {
+  top: 875px;
+  left: 480px;
+}
+
+.morteye2 {
+  top: 883px;
+  left: 427px
+}
+
+
+
+
+
